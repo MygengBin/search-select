@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="df"></div>
+    <script>
+        onload=()=>{
+            const dom = new searchSelect({
+                id:'df',
+                searchType:[
+                    {text:'123',value:'123ff'},
+                    {text:'123ee',value:'123f2'}
+                ],
+                searchClick({selectedValue,inputedValue}){
+                    console.log(selectedValue);
+                    console.log(inputedValue);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
