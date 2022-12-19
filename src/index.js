@@ -4,11 +4,15 @@ window.searchSelect = class{
     mainColor='';
     searchType=[];
     searchClick=function({selectValue,inputedValue}){}
+    selectMinWidth='0';
+    buttonMinWidth='0';
     constructor({
         id,
         mainColor='#e56a24',
         searchType=[{text:'请选择',value:''}],
-        searchClick=function({selectValue,inputedValue}){}
+        searchClick=function({selectValue,inputedValue}){},
+        selectMinWidth='100px',
+        buttonMinWidth='100px'
     }){
         if(!id) throw new Error('Id is null');
         this.id=id;
@@ -16,15 +20,17 @@ window.searchSelect = class{
         this.searchType=searchType;
         this.searchClick=searchClick;
         this.dom=document.getElementById(id);
+        this.selectMinWidth = selectMinWidth;
+        this.buttonMinWidth = buttonMinWidth;
         this.render();
     }
     renderStyle(){
         let str=`<style>`;
         str+=`#${this.id}{border-bottom:1px solid ${this.mainColor};display:flex;height:30px}`;
         str+=`#${this.id} select,#${this.id} input{border:none;}`;
-        str+=`#${this.id} select{width:10%;}`;
+        str+=`#${this.id} select{width:10%;min-width:${this.selectMinWidth}}`;
         str+=`#${this.id} input{width:80%;outline:0}`;
-        str+=`#${this.id} button{width:10%;border:1px solid ${this.mainColor};background-color:white;color:${this.mainColor};margin-bottom:1px}`;
+        str+=`#${this.id} button{width:10%;border:1px solid ${this.mainColor};background-color:white;color:${this.mainColor};margin-bottom:1px;min-width:${this.buttonMinWidth};}`;
         str+=`#${this.id} button:hover{color:white;background-color:${this.mainColor};}`;
         str+=`</style>`;
         return str;
